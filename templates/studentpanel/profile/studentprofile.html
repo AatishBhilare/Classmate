@@ -1,0 +1,23 @@
+{% extends "studentpanel/base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Student Profile</h1><br><br><br><br><br>
+
+        <img src="{{studentObj.user_ref.user_image.url}}"><br><br>
+        {{studentObj.user_ref.username}}<br>
+        {{studentObj.user_ref.user_full_name}}<br>
+        {{studentObj.user_ref.user_mobile}}<br>
+        {{studentObj.user_ref.user_address}}<br><br>
+        {{studentObj.user_ref.user_gender}}<br><br>
+        {{studentObj.user_ref.user_dob}}<br>
+        {{studentObj.stud_roll}}<br>
+        {{studentObj.dept}}<br>
+        {{studentObj.semref}}<br>
+
+        <a href="{% url 'editstudentprofile' studentObj.user_ref.id %}">Edit</a>
+
+    </div>
+</div>
+{% endblock %}

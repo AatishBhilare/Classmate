@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Add Department</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <button name="submit" type="submit">Add</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-warning">
+                <p>
+                    <i class="fab fa-black-tie"></i>
+                </p>
+                <h3>{{teacher_count}}</h3>
+                <p>Teachers</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-primary">
+                <p>
+                    <i class="fas fa-user-tie"></i>
+                </p>
+                <h3>{{student_count}}</h3>
+                <p>Students</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-danger">
+                <p>
+                    <i class="fas fa-book-open"></i>
+                </p>
+                <h3>0</h3>
+                <p>Assignment</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-success">
+                <p>
+                    <i class="fas fa-check-circle"></i>
+                </p>
+                <h3>{{dept_count}}</h3>
+                <p>Departments</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-danger">
+                <p>
+                    <i class="fas fa-book"></i>
+                </p>
+                <h3>{{sub_count}}</h3>
+                <p>Subjects</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

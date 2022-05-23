@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Add Student</h1>
+        <form method="POST" enctype="multipart/form-data" id="semesterForm" data-sem-url="{% url 'ajax_load_sem' %}">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button type="submit">Add</button>
+            <a href="{% url 'student' %}">Cancel</a>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                $("#id_dept").change(function () {
+                var url = $("#semesterForm").attr("data-sem-url");
+                var deptId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                    'dept': deptId
+                    },
+                    success: function (data) {
+                    $("#id_semref").html(data);
+                    }
+                });
+                });
+            });
+        </script>
+
+    </div>
+</div>
+{% endblock %}

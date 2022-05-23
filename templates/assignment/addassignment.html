@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Add Assignment</h1>
+        <form method="post" enctype="multipart/form-data" id="assignmentForm" data-sem-url="{% url 'ajax_load_sem' %}"
+              data-sub-url="{% url 'ajax_load_sub' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add</button>
+            <a href="{% url 'student' %}">Cancel</a>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                $("#id_dept").change(function () {
+                var url = $("#assignmentForm").attr("data-sem-url");
+                var deptId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                    'dept': deptId
+                    },
+                    success: function (data) {
+                    $("#id_semref").html(data);
+                    }
+                });
+                });
+
+                $("#id_semref").change(function () {
+                var url = $("#assignmentForm").attr("data-sub-url");
+                var semrefId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                    'semref': semrefId
+                    },
+                    success: function (data) {
+                    $("#id_subref").html(data);
+                    }
+                });
+                });
+            });
+
+        </script>
+
+    </div>
+</div>
+{% endblock %}

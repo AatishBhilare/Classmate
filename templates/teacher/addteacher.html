@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Add Teacher</h1>
+        <form method="POST" enctype="multipart/form-data" id="teacherForm" data-sem-url="{% url 'ajax_load_sem' %}"
+              data-sub-url="{% url 'ajax_load_sub' %}">
+            {% csrf_token %}
+            {{form2.as_p}}
+            {{ formset.management_form }}
+            {% for form in formset %}
+            {{form}}
+            {% endfor %}
+
+            <a id="addsub">Add Sub</a>
+            <a id="minussubbtn">Delete Sub</a>
+            <div id="subdiv"></div>
+
+
+            <button name="submit" type="submit">Add</button>
+        </form>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $(document).on('change','.deptclass',function(){
+
+                var depart = $(this).attr('id')
+                var depart2 = depart.slice(8, )
+                var depart3 = depart2.length-5
+                var form_no = depart2.slice(0,depart3)
+
+
+                var url = $("#teacherForm").attr("data-sem-url");
+                var deptId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                    'dept': deptId
+                    },
+                    success: function (data) {
+                    var fid = "#id_form-" + form_no +"-semref"
+                    $(fid).html(data);
+                    }
+                });
+            });
+
+
+            $(document).on('change','.semclass',function(){
+
+                var sems = $(this).attr('id')
+                var sems2 = sems.slice(8, )
+                var sems3 = sems2.length-7
+                var form_no2 = sems2.slice(0,sems3)
+
+                var url = $("#teacherForm").attr("data-sub-url");
+                var semrefId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                    'semref': semrefId
+                    },
+                    success: function (data) {
+                    var sbid = "#id_form-" + form_no2 +"-subref"
+
+                    $(sbid).html(data);
+                    }
+                });
+            });
+
+        </script>
+
+        <script>
+    var form_num = 0;
+    $(document).ready(function() {
+     	$("#minussubbtn").hide();
+       $("#addsub").click(function() {
+       form_num ++;
+       $("input[id='id_form-TOTAL_FORMS']").attr('value', form_num + 1);
+          $("#subdiv").append("<div id='id_form-" + form_num +"'><label for='id_form-" + form_num +"-dept'>Dept:</label><select class='deptclass' name='form-" + form_num +"-dept' id='id_form-" + form_num +"-dept'><option value='' selected=''>---------</option><option value='4'>Information Technology</option><option value='5'>Computer Engineering</option><option value='6'>Mechanical</option><option value='8'>Chemical Engineering</option></select><label for='id_form-" + form_num +"-semref'>Semref:</label><select class='semclass' name='form-" + form_num +"-semref' id='id_form-" + form_num +"-semref'><option value='' selected=''>---------</option></select><label for='id_form-" + form_num +"-subref'>Subref:</label><select name='form-" + form_num +"-subref' id='id_form-" + form_num +"-subref'><option value='' selected=''>---------</option></select></div>");
+
+
+          if (form_num == 1)
+		{
+			$("#minussubbtn").show();
+		}
+       });
+
+       $("#minussubbtn").click(function() {
+       	var xval = $("input[id='id_form-TOTAL_FORMS']").val() - 1;
+       	var ddivid = "id_form-" + xval +""
+
+
+       if ($('#id_form-TOTAL_FORMS').val() > 1) {
+       		$("#"+ddivid+"").remove();
+       		$("input[id='id_form-TOTAL_FORMS']").val(xval);
+       		form_num--;
+			}
+		if (form_num == 0)
+		{
+			$("#minussubbtn").hide();
+		}
+		});
+
+    });
+
+        </script>
+
+    </div>
+</div>
+{% endblock %}

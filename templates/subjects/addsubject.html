@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Add Subject</h1>
+        <form method="POST" enctype="multipart/form-data" id="subjectForm" data-sem-url="{% url 'ajax_load_sem' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <button name="submit" type="submit">Add</button>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                $("#id_dept").change(function () {
+                var url = $("#subjectForm").attr("data-sem-url");
+                var deptId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                    'dept': deptId
+                    },
+                    success: function (data) {
+                    $("#id_semref").html(data);
+                    }
+                });
+                });
+            });
+        </script>
+    </div>
+</div>
+{% endblock %}

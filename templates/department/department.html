@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <a href="{% url 'adddepartment' %}">Add</a><br>
+    </div>
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        Departments
+                    </h2>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Department Name</th>
+                            <th>Teachers Count</th>
+                            <th>Students Count</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for department in departments %}
+                        <tr>
+                            <td>{{department.dept_name}}</td>
+                            <td>{{department.teacher_count}}</td>
+                            <td>{{department.student_count}}</td>
+                            <td><a href="{% url 'editdepartment' department.id %}">Edit</a></td>
+                            <td><a href="{% url 'deletedepartment' department.id  %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

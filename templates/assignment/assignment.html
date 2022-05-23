@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <a href="{% url 'addassignment' %}">Add</a><br>
+    </div>
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        Assignments
+                    </h2>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Assignment No</th>
+                            <th>Assignment Title</th>
+                            <th>Department Name</th>
+                            <th>Semester</th>
+                            <th>Subject Name</th>
+                            <th>Deadline</th>
+                            <th>Marks</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for assignment in assignments %}
+                        <tr>
+                            <td>{{assignment.asg_no}}</td>
+                            <td>{{assignment.asg_title}}</td>
+                            <td>{{assignment.dept.dept_name}}</td>
+                            <td>{{assignment.semref.sem_no}}</td>
+                            <td>{{assignment.subref.sub_name}}</td>
+                            <td>{{assignment.asg_deadline}}</td>
+                            <td>{{assignment.asg_marks}}</td>
+                            <td><a href="{% url 'editassignment' assignment.id %}">Edit</a></td>
+                            <td><a href="{% url 'deleteassignment' assignment.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

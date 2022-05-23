@@ -1,0 +1,48 @@
+{% extends "studentpanel/base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        Assignments
+                    </h2>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Assignment No</th>
+                            <th>Assignment Title</th>
+                            <th>Department Name</th>
+                            <th>Semester</th>
+                            <th>Subject Name</th>
+                            <th>Deadline</th>
+                            <th>Marks</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for submission in submissionObj %}
+                        <tr>
+                            <td>{{submission.asgref.asg_no}}</td>
+                            <td>{{submission.asgref.asg_title}}</td>
+                            <td>{{submission.asgref.dept.dept_name}}</td>
+                            <td>{{submission.asgref.semref.sem_no}}</td>
+                            <td>{{submission.asgref.subref.sub_name}}</td>
+                            <td>{{submission.asgref.asg_deadline}}</td>
+                            <td>{{submission.asgref.asg_marks}}</td>
+                            <td><a href="{% url 'submitassignment' submission.id %}">Add</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

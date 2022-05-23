@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <a href="{% url 'addsubject' %}">Add</a><br>
+    </div>
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        Subjects
+                    </h2>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Department</th>
+                            <th>Semester</th>
+                            <th>Assignment Count</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for subject in subjectObj %}
+                        <tr>
+                            <td>{{subject.sub_name}}</td>
+                            <td>{{subject.semref.dept.dept_name}}</td>
+                            <td>{{subject.semref.sem_no}}</td>
+                            <td>1</td>
+                            <td><a href="{% url 'editsubject' subject.id %}">Edit</a></td>
+                            <td><a href="{% url 'deletesubject' subject.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

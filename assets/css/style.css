@@ -1,0 +1,378 @@
+.bg-primary {
+  background: red;
+}
+
+.bg-success {
+  background: green;
+}
+
+.bg-warning {
+  background: blue;
+}
+
+.bg-danger {
+  background: orange;
+}
+
+/* BODY */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background: var(--main-bg-color);
+	color: var(--main-color);
+	margin: 0;
+}
+
+/* NAVBAR */
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	background: #fff;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 101;
+	box-shadow: rgba(0,0,0,0.12) 0px 1px 4px 1px;
+}
+
+.navbar-nav {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	padding-left: 0;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.nav-link {
+	float: left;
+	text-align: center;
+	padding: 20px 15px;
+	text-decoration: none;
+	font-size: 18px;
+	color: var(--second-color);
+	position: relative;
+}
+
+.nav-link:hover {
+	cursor: pointer;
+}
+
+.navbar-nav i {
+	font-size: 1.4rem;
+}
+
+.nav-right {
+	margin-left: auto;
+}
+
+.logo {
+	height: 65px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.avt img {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+}
+
+.avt {
+	padding: 0 13px;
+	padding-top: 13px;
+	cursor: pointer;
+}
+
+/* WRAPPER */
+
+.wrapper {
+	padding: 10px;
+	margin-left: 82px;
+	padding-top: 75px;
+	background: var(--second-bg-color);
+	transition: margin-left .5s;
+}
+
+/* SIDEBAR SIDE_NAVIGATION_BAR*/
+
+.sidebar {
+	width: 82px;
+	height: 100vh;
+	position: fixed;
+	margin-top: 69px;
+	/*background: var(--main-bg-color); 09203f → #537895 */
+	background-image: linear-gradient(135deg, #09203f, #315f83);
+	box-shadow: rgba(0,0,0,0.12) 0px 1px 4px 1px;
+	overflow: hidden;
+	z-index: 100;
+	transition: width .5s;
+}
+
+
+.sidebar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+}
+
+.sidebar-nav-item {
+	width: 100%;
+}
+
+.sidebar-nav-link {
+	display: flex;
+	align-items: center;
+	color: #fff;
+	text-decoration: none;
+}
+
+.sidebar-nav-link i {
+	font-size: 1.5rem;
+	color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.sidebar-nav-link div {
+	min-width: 82px;
+	height: 50px;
+	position: relative;
+}
+
+.sidebar-nav-link:hover {
+	background-image: linear-gradient(to right, #194f96, #315f83);
+}
+
+.sidebar-nav-link.active {
+	background: var(--second-bg-color);
+	color: red;
+}
+
+.sidebar-nav-link.active div {
+	border-left: 5px solid red;
+}
+
+.sidebar-nav-link.active i {
+	color: red;
+	margin-left: -5px;
+}
+
+.sidebar-expand .sidebar {
+	width: 220px;
+}
+
+.sidebar-expand .wrapper {
+	margin-left: 220px;
+}
+
+/* ROW in WRAPPER */
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.row:after, .row:before {
+	box-sizing: border-box;
+}
+
+[class*="col-"] {
+	padding: 10px;
+}
+
+/* COUNTER BOXES */
+
+.counter {
+	padding: 16px;
+	text-align: center;
+	color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.counter i {
+	font-size: 50px;
+}
+
+/* CARD BODY */
+
+.card {
+	background: var(--main-bg-color);
+	color: var(--main-color);
+	border-radius: 10px;
+	margin-bottom: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-header {
+	padding: 15px 30px;
+	border-bottom: 1px solid rgb(197, 197, 197);
+	position: relative;
+}
+
+.card-header i {
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.card-header i:hover {
+	cursor: pointer;
+}
+
+.card-header h2 {
+	color: #444444;
+	margin: 0;
+}
+
+.card-content {
+	padding: 16px;
+	overflow-x: auto;
+}
+
+/* TABLE */
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table td {
+	padding: 15px;
+	text-align: center;
+}
+
+table th {
+	padding: 15px 12px;
+	text-align: center;
+}
+
+
+/* SCROLLBAR */
+
+.overlay-scrollbar::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+.scrollbar-hover::-webkit-scrollbar {
+	display: none;
+}
+
+.scrollbar-hover:hover::-webkit-scrollbar {
+	display: block;
+}
+
+.overlay-scrollbar::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 10rem;
+	border: 1px solid var(--main-bg-color);
+}
+
+.overlay-scrollbar::-webkit-scrollbar-track-piece:start {
+	background: transparent;
+}
+
+.overlay-scrollbar::-webkit-scrollbar-track-piece:end {
+	background: transparent;
+}
+
+/* DISPLAY VIEW */
+
+/* Extra small devices <= 600px */
+@media only screen and (max-width: 600px) {
+	.sidebar {
+		width: 0;
+	}
+	.wrapper {
+		margin-left: 0;
+	}
+	.sidebar-expand .wrapper {
+		margin-left: 0;
+	}
+	.nav-right .nav-item {
+		display: none;
+	}
+	[class*="col-"] {
+		width: 100%
+	}
+}
+
+/* Small devices >= 600px */
+@media only screen and (min-width: 600px) {
+	.col-sm-1 {width: 8.33%;}
+	.col-sm-2 {width: 16.66%;}
+	.col-sm-3 {width: 25%;}
+	.col-sm-4 {width: 33.33%;}
+	.col-sm-5 {width: 41.66%;}
+	.col-sm-6 {width: 50%;}
+	.col-sm-7 {width: 58.33%;}
+	.col-sm-8 {width: 66.66%;}
+	.col-sm-9 {width: 75%;}
+	.col-sm-10 {width: 83.33%;}
+	.col-sm-11 {width: 91.66%;}
+	.col-sm-12 {width: 100%;}
+}
+
+/* Medium devices >= 768px */
+@media only screen and (min-width: 768px) {
+	.col-m-1 {width: 8.33%;}
+	.col-m-2 {width: 16.66%;}
+	.col-m-3 {width: 25%;}
+	.col-m-4 {width: 33.33%;}
+	.col-m-5 {width: 41.66%;}
+	.col-m-6 {width: 50%;}
+	.col-m-7 {width: 58.33%;}
+	.col-m-8 {width: 66.66%;}
+	.col-m-9 {width: 75%;}
+	.col-m-10 {width: 83.33%;}
+	.col-m-11 {width: 91.66%;}
+	.col-m-12 {width: 100%;}
+}
+
+/* laptops/desktops >= 992px */
+@media only screen and (min-width: 992px) {
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+}
+
+/* large laptops and desktops >= 1200px */
+@media only screen and (min-width: 1200px) {
+	.col-xl-1 {width: 8.33%;}
+	.col-xl-2 {width: 16.66%;}
+	.col-xl-3 {width: 25%;}
+	.col-xl-4 {width: 33.33%;}
+	.col-xl-5 {width: 41.66%;}
+	.col-xl-6 {width: 50%;}
+	.col-xl-7 {width: 58.33%;}
+	.col-xl-8 {width: 66.66%;}
+	.col-xl-9 {width: 75%;}
+	.col-xl-10 {width: 83.33%;}
+	.col-xl-11 {width: 91.66%;}
+	.col-xl-12 {width: 100%;}
+}

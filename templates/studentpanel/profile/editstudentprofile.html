@@ -1,0 +1,17 @@
+{% extends "studentpanel/base.html" %}
+
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Edit Student</h1>
+        <form method="POST" enctype="multipart/form-data" id="semesterForm" data-sem-url="{% url 'ajax_load_sem' %}">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button name="submit" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

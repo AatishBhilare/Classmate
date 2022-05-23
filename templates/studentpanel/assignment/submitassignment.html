@@ -1,0 +1,17 @@
+{% extends "studentpanel/base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <h1>Submit Assignment</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{submissionObj.asgref.asg_no}}
+            {{submissionObj.asgref.asg_title}}
+            {{form.as_p}}
+            <button type="submit">Add</button>
+            <a href="#">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+<div class="wrapper">
+    <div class="row">
+        <a href="{% url 'addstudent' %}">Add</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        Students
+                    </h2>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Roll No</th>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Department</th>
+                            <th>Semester</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{student.stud_roll}}</td>
+                            <td>{{student.user_ref.username}}</td>
+                            <td>{{student.user_ref.user_full_name}}</td>
+                            <td>{{student.user_ref.user_dob}}</td>
+                            <td>{{student.user_ref.get_user_gender_display}}</td>
+                            <td>{{student.dept.dept_name}}</td>
+                            <td>{{student.semref.sem_no}}</td>
+                            <td><a href="{% url 'editstudent' student.id %}">Edit</a></td>
+                            <td><a href="{% url 'deletestudent' student.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
